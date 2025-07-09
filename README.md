@@ -53,8 +53,8 @@ f(n) = g(n) + h(n)
 ```
 
 Where:
-- **g(n)**: Actual cost from start to node n (based on reasoning quality)
-- **h(n)**: Heuristic estimate of cost from n to goal (based on promise/value)
+- **g(n)**: Actual cost from start to node n.
+- **h(n)**: Heuristic estimate of cost from n to goal.
 
 The algorithm always expands the node with the lowest f-score, making it both optimal and complete under certain conditions.
 
@@ -97,7 +97,7 @@ This inversion ensures that higher quality paths have lower costs, as required b
 
 #### 2. H-Score Calculation (Heuristic)
 
-The heuristic uses the node's evaluation value from the standard ToT evaluation module:
+The heuristic uses the node's evaluation value from the standard ToT evaluation (not proven to be admissible; TODO: need to work on how we can guarantee it never overestimates the actual cost to reach the goal):
 ```python
 def _get_h_score(self, node: TreeNode) -> float:
     if node.value is not None:
