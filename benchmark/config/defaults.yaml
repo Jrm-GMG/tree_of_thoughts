@@ -1,0 +1,47 @@
+# Default configuration for all benchmarks
+model: "meta-llama/Llama-3.2-3B-Instruct"
+device: "cuda"
+seed: 42
+verbose: false
+show_trees: false
+debug: false
+
+# Dataset configuration
+dataset:
+  # For game24: 'file' (CSV)
+  # For math: 'huggingface' or 'file'
+  source: "huggingface"
+  # Path for file-based datasets
+  path: null
+  # For HuggingFace datasets
+  streaming: false
+  random_selection: false
+
+# Tree of Thoughts defaults
+tot:
+  max_depth: 5
+  num_generations: 3
+  temperature: 0.7
+  max_new_tokens: 200
+  
+# Search strategy defaults
+search:
+  bfs:
+    depth_limit: 4
+    breadth_limit: 5
+  dfs:
+    depth_limit: 4
+    pruning_threshold: 0.5
+  astar:
+    depth_limit: 4
+    weights:
+      validity: 0.2
+      coherence: 0.2
+      evaluation: 0.6
+
+# Baseline (IO/CoT) settings
+baseline:
+  # Number of independent runs for oracle evaluation
+  oracle_k: 10
+  # Generation temperature for baseline solvers
+  temperature: 1.0

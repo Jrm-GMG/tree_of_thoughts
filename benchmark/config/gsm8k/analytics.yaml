@@ -1,0 +1,24 @@
+# GSM8K analytics benchmark configuration
+extends: defaults.yaml
+
+task: gsm8k
+num_problems: 200
+
+dataset:
+  source: "huggingface"
+  split: "main"
+  streaming: false
+  random_selection: true
+
+strategies:
+  - baseline_direct
+  - baseline_cot
+
+analytics:
+  show_comparison_matrix: true
+  track_reasoning_steps: true
+
+output:
+  results: "benchmark/results/gsm8k_analytics.csv"
+  comparison: "benchmark/results/gsm8k_comparison.csv"
+  metrics: "benchmark/results/gsm8k_metrics.json"
