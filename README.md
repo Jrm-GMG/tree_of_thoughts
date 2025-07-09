@@ -1,4 +1,4 @@
-# Tree of Thoughts Framework
+# Tree of Thoughts 
 
 This is a side project exploring Tree of Thoughts reasoning with LLMs. ToT enables LLMs to explore multiple reasoning paths through backtracking, evaluation, and systematic search. The A* search strategy is an experimental extension showing how classical AI search algorithms can be adapted with neural heuristics.
 
