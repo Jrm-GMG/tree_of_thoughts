@@ -1,6 +1,6 @@
 # Tree of Thoughts 
 
-This is a side project exploring Tree of Thoughts reasoning with LLMs. ToT enables LLMs to explore multiple reasoning paths through backtracking, evaluation, and systematic search. The A* search strategy is an experimental extension showing how classical AI search algorithms can be adapted with neural heuristics.
+This is a side project exploring <a href="https://arxiv.org/abs/2305.10601">Tree of Thoughts</a><sup>1</sup> method. ToT enables LLMs to explore multiple reasoning paths through backtracking, evaluation, and systematic search. The A* search strategy is an experimental extension showing how classical AI search algorithms can be adapted with neural heuristics.
 
 ## Jobs done
 - **Multiple Search Algorithms** – BFS and DFS from the original ToT paper, plus a custom A* implementation with LLM-based heuristics
@@ -62,6 +62,9 @@ The algorithm always expands the node with the lowest f-score, making it both op
 
 #### 1. G-Score Calculation (Path Cost)
 
+As inspiration, I used the following paper: <a href="https://arxiv.org/abs/2502.12289">Evaluating Step-by-step Reasoning Traces: A Survey</a><sup>2</sup> .
+Since the TOT evaluation method already evaluates **utility**, I decided to evaluate the **validity** and **coherence** of the partial COT from node to root with an LLM as a judge 
+(hence following the philosophy of the TOT paper by prompting the LLM to evaluate).
 The g-score evaluates the quality of the reasoning chain from root to current node using two LLM-based metrics:
 
 **Validity Assessment**
@@ -230,5 +233,41 @@ benchmark/              # Evaluation suite
 baseline/              # Direct prompting baselines
 data/                 # Dataset files
 ```
+
+## Sources
+
+@misc{yao2023treethoughtsdeliberateproblem,
+
+      title={Tree of Thoughts: Deliberate Problem Solving with Large Language Models}, 
+
+      author={Shunyu Yao and Dian Yu and Jeffrey Zhao and Izhak Shafran and Thomas L. Griffiths and Yuan Cao and Karthik Narasimhan},
+
+      year={2023},
+
+      eprint={2305.10601},
+
+      archivePrefix={arXiv},
+
+      primaryClass={cs.CL},
+
+      url={https://arxiv.org/abs/2305.10601}, 
+}
+
+@misc{lee2025evaluatingstepbystepreasoningtraces,
+
+      title={Evaluating Step-by-step Reasoning Traces: A Survey}, 
+
+      author={Jinu Lee and Julia Hockenmaier},
+
+      year={2025},
+
+      eprint={2502.12289},
+
+      archivePrefix={arXiv},
+
+      primaryClass={cs.CL},
+
+      url={https://arxiv.org/abs/2502.12289}, 
+}
 
 
