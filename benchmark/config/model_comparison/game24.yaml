@@ -1,0 +1,29 @@
+# Model comparison for Game of 24
+extends: defaults.yaml
+
+task: game24
+num_puzzles: 100
+hard_only: true
+
+# Dataset configuration
+dataset:
+  source: "file"
+  path: "data/24/24.csv"
+  random_selection: true
+
+# Models to compare
+models:
+  - "meta-llama/Llama-3.2-1B-Instruct"
+  - "meta-llama/Llama-3.2-3B-Instruct"
+  - "meta-llama/Llama-3.2-8B-Instruct"
+
+# Strategies to test with each model
+strategies:
+  - baseline_direct
+  - baseline_cot
+  - bfs
+  - astar
+
+output:
+  summary: "benchmark/results/game24_model_comparison.csv"
+  detailed: "benchmark/results/game24_model_metrics.json"

@@ -1,0 +1,31 @@
+# Game of 24 analytics demo configuration
+extends: defaults.yaml
+
+task: game24
+num_puzzles: 100
+hard_only: true
+
+# Dataset configuration
+dataset:
+  source: "file"
+  path: "data/24/24.csv"
+  random_selection: true
+
+# Use all strategies for comparison
+strategies:
+  - baseline_direct
+  - baseline_cot
+  - bfs
+  - dfs
+  - astar
+
+# Analytics specific settings
+analytics:
+  show_comparison_matrix: true
+  show_pairwise_stats: true
+  export_detailed_metrics: true
+
+output:
+  results: "benchmark/results/game24_analytics.csv"
+  comparison: "benchmark/results/game24_comparison.csv"
+  metrics: "benchmark/results/game24_metrics.json"

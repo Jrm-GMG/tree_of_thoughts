@@ -1,0 +1,19 @@
+# GSM8K astar-only benchmark configuration
+extends: defaults.yaml
+
+task: gsm8k
+num_problems: 100
+
+# Dataset configuration for GSM8K
+dataset:
+  split: "main"
+  random_selection: true
+
+strategies:
+  - astar
+
+prompts:
+  output_format: "#### answer"
+
+output:
+  results: "benchmark/results/gsm8k_astar.csv"

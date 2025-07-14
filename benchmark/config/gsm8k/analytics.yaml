@@ -1,0 +1,22 @@
+extends: defaults.yaml
+
+task: gsm8k
+num_problems: 100
+
+dataset:
+  split: "main"
+  random_selection: true
+
+strategies:
+  - baseline_cot
+  - bfs
+  - astar
+
+analytics:
+  show_comparison_matrix: true
+  track_reasoning_steps: true
+
+output:
+  results: "benchmark/results/gsm8k_analytics.csv"
+  comparison: "benchmark/results/gsm8k_comparison.csv"
+  metrics: "benchmark/results/gsm8k_metrics.json"

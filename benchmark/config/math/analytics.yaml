@@ -1,0 +1,34 @@
+# Math reasoning analytics configuration
+extends: defaults.yaml
+
+task: math
+num_problems: 100
+
+# Dataset configuration
+dataset:
+  random_selection: true
+
+strategies:
+  - baseline_direct
+  - baseline_cot
+  - bfs
+  - dfs
+  - astar
+
+# Enhanced analytics for math
+analytics:
+  show_comparison_matrix: true
+  track_reasoning_steps: true
+  measure_solution_quality: true
+
+# Math-specific search settings
+search:
+  dfs:
+    depth_limit: 5  
+  astar:
+    depth_limit: 5
+
+output:
+  results: "benchmark/results/math_analytics.csv"
+  comparison: "benchmark/results/math_comparison.csv"
+  metrics: "benchmark/results/math_metrics.json"
