@@ -1,0 +1,80 @@
+{
+  "summary": {
+    "Success Rate": {
+      "baseline_cot": 0.36,
+      "bfs": 0.9,
+      "dfs": 0.87,
+      "astar": 0.99
+    },
+    "Avg Time (s)": {
+      "baseline_cot": 132.64995498895644,
+      "bfs": 69.97264797925949,
+      "dfs": 233.32447400331498,
+      "astar": 249.71503204345703
+    },
+    "Total Solved": {
+      "baseline_cot": 36,
+      "bfs": 90,
+      "dfs": 87,
+      "astar": 99
+    },
+    "Total Problems": {
+      "baseline_cot": 100,
+      "bfs": 100,
+      "dfs": 100,
+      "astar": 100
+    },
+    "Avg Nodes": {
+      "baseline_cot": "None",
+      "bfs": 18.68,
+      "dfs": 54.15,
+      "astar": 48.25
+    }
+  },
+  "pairwise": {
+    "baseline_cot_vs_bfs": {
+      "both_solved": 34,
+      "baseline_cot_only": 2,
+      "bfs_only": 56,
+      "neither_solved": 8,
+      "agreement_rate": 0.42
+    },
+    "baseline_cot_vs_dfs": {
+      "both_solved": 34,
+      "baseline_cot_only": 2,
+      "dfs_only": 53,
+      "neither_solved": 11,
+      "agreement_rate": 0.45
+    },
+    "baseline_cot_vs_astar": {
+      "both_solved": 36,
+      "baseline_cot_only": 0,
+      "astar_only": 63,
+      "neither_solved": 1,
+      "agreement_rate": 0.37
+    },
+    "bfs_vs_dfs": {
+      "both_solved": 81,
+      "bfs_only": 9,
+      "dfs_only": 6,
+      "neither_solved": 4,
+      "agreement_rate": 0.85
+    },
+    "bfs_vs_astar": {
+      "both_solved": 90,
+      "bfs_only": 0,
+      "astar_only": 9,
+      "neither_solved": 1,
+      "agreement_rate": 0.91
+    },
+    "dfs_vs_astar": {
+      "both_solved": 87,
+      "dfs_only": 0,
+      "astar_only": 12,
+      "neither_solved": 1,
+      "agreement_rate": 0.88
+    }
+  },
+  "best_by_success": "astar",
+  "best_by_speed": "bfs"
+}
