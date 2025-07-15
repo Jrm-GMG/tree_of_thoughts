@@ -187,8 +187,39 @@ output:
   results: "benchmark/results/math_analytics.csv"
 ```
 ## Result
-Soon...
-Some experiments are on the way. The `model-comparison` mode will test `microsoft/Phi-4-mini-reasoning`, `meta-llama/Llama-3.2-3B-Instruct` and `Qwen/Qwen3-4B` across baseline prompting and ToT using BFS, DFS and A* on both the NVIDIA AceReason-Math and GSM8K datasets.
+
+This benchmark evaluates the TOT approach using the meta-llama/Llama-3.2-3B-Instruct model on the NVIDIA AceReason-Math dataset. We compare TOT performance on 100 randomly selected math problems (using seed 42) across different tree exploration strategies: A*, breadth-first search (BFS), depth-first search (DFS), and an oracle setup for CoT where the best of k = 10 samples is selected.
+
+The TOT parameters are configured as follows: maximum depth of 5, 3 generations per node, and generation mode set to SAMPLE (see benchmark/config/math/analytics.yaml config file for more details). 
+To reproduce these experiments, run `python3 -m benchmark math`.
+
+### Strategy Performance Summary
+
+| Strategy | Success Rate | Avg Time (s) | Total Solved | Total Problems | Avg Nodes |
+|----------|-------------|--------------|--------------|----------------|-----------|
+| **baseline_cot** (best of 10) | 0.36 | 132.65 | 36 | 100 | - |
+| **bfs** | 0.90 | 69.97 | 90 | 100 | 18.68 |
+| **dfs** | 0.87 | 233.32 | 87 | 100 | 54.15 |
+| **A \*** | 0.99 | 249.72 | 99 | 100 | 48.25 |
+
+### Pairwise Win Counts
+*Rows show strategy successes where columns failed*
+
+| Strategy A / Strategy B | **A \*** | **baseline_cot** (best of 10) | **bfs** | **dfs** |
+|------------------------|-------|--------------|-----|-----|
+| **A \*** | 0 | 63 | 9 | 12 |
+| **baseline_cot** (best of 10) | 0 | 0 | 2 | 2 |
+| **bfs** | 0 | 56 | 0 | 9 |
+| **dfs** | 0 | 53 | 6 | 0 |
+
+### Key Results
+- **A \*** achieves the highest success rate at 99%
+- **BFS** provides the fastest average solving time at ~70 seconds (baseline exlcude)
+- **Baseline CoT** (best of 10) has the lowest success rate at 36%
+- **DFS** uses the most nodes on average (54.15) but maintains good success rate (87%)
+
+  
+More experiments are on the way. The `model-comparison` mode will test `microsoft/Phi-4-mini-reasoning`, `meta-llama/Llama-3.2-3B-Instruct` and `Qwen/Qwen3-4B` across baseline prompting and ToT using BFS, DFS and A* on both the NVIDIA AceReason-Math and GSM8K datasets.
 
 ## Repository Structure
 ```
