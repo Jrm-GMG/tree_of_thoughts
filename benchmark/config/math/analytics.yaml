@@ -9,7 +9,6 @@ dataset:
   random_selection: true
 
 strategies:
-  - baseline_direct
   - baseline_cot
   - bfs
   - dfs
