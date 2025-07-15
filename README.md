@@ -223,26 +223,40 @@ More experiments are on the way. The `model-comparison` mode will test `microsof
 
 ## Repository Structure
 ```
-tree_of_thoughts/         # Core framework
-├── llm_instance.py      # LLM wrapper with caching
-├── tree_node.py         # Tree data structure
-├── base_task.py         # Abstract task interface
-└── solver/
-    ├── reasoning/       # Generation and evaluation
-    └── search_algorithm/  # BFS, DFS, A* implementations
-
-tasks/                   # Task implementations
-├── game24_task.py      # Game of 24 puzzle
-├── ace_reason_math_task.py  # Math reasoning
-└── gsm8k_task.py       # Grade school math
-
-benchmark/              # Evaluation suite
-├── config/            # YAML configurations
-├── utils/             # Analysis tools
-└── results/           # Output directory
-
-baseline/              # Direct prompting baselines
-data/                 # Dataset files
+tree-of-thoughts/
+│
+├── tree_of_thoughts/              # Core framework
+│   ├── llm_instance.py            # LLM wrapper
+│   ├── tree_node.py               # Tree data structure
+│   ├── base_task.py               # Task interface
+│   └── solver/                   
+│       ├── reasoning/             # Generation & evaluation modules
+│       └── search_algorithm/      # BFS, DFS, A* strategies
+│
+├── tasks/                        # Task implementations
+│   ├── game24_task.py            # Game of 24
+│   ├── ace_reason_math_task.py   # Math reasoning = NVIDIA AceReason-Math
+│   └── gsm8k_task.py             # GSM8K
+│
+├── baseline/                     # Baseline solvers (IO/CoT)
+│   ├── game24/                  
+│   ├── math/                    
+│   └── gsm8k/                   
+│
+├── benchmark/                    # Evaluation suite
+│   ├── config/                   # YAML configurations
+│   ├── utils/                    # Runners, analysis tools
+│   ├── game24/                   # game24 benchmarks
+│   ├── math/                     # NVIDIA AceReason-Math benchmarks
+│   ├── gsm8k/                    # Task-specific benchmarks
+│   └── model_comparison/         # Cross-model evaluation
+│
+├── data/                         # Datasets
+│   └── 24/24.csv                 # GSM8K
+│
+├── setup.py                     
+├── requirements.txt             
+└── README.md
 ```
 
 ## Sources
